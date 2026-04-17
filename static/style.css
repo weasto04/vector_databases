@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+	color-scheme: light;
+	--bg: #f5f1e8;
+	--bg-accent: #dce9e6;
+	--panel: rgba(255, 255, 255, 0.82);
+	--panel-border: rgba(34, 40, 49, 0.12);
+	--text: #14202b;
+	--muted: #5f6b76;
+	--accent: #0f766e;
+	--accent-strong: #115e59;
+	--error: #b42318;
+	--shadow: 0 24px 70px rgba(16, 24, 40, 0.14);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: "Inter", sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(circle at top left, rgba(15, 118, 110, 0.16), transparent 32%),
+		radial-gradient(circle at top right, rgba(220, 233, 230, 0.95), transparent 36%),
+		linear-gradient(180deg, #fffdf9 0%, var(--bg) 100%);
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	background-image: linear-gradient(rgba(20, 32, 43, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 32, 43, 0.03) 1px, transparent 1px);
+	background-size: 34px 34px;
+	mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 88%);
+}
+
+.app-shell {
+	width: min(1100px, calc(100% - 32px));
+	margin: 0 auto;
+	padding: 64px 0 56px;
+	display: grid;
+	gap: 28px;
+}
+
+.hero {
+	max-width: 760px;
+	padding: 8px 0;
+}
+
+.eyebrow {
+	margin: 0 0 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.16em;
+	font-size: 0.78rem;
+	color: var(--accent-strong);
+	font-weight: 700;
+}
+
+h1 {
+	margin: 0;
+	font-size: clamp(2.4rem, 4vw, 4.6rem);
+	line-height: 0.98;
+	letter-spacing: -0.05em;
+	max-width: 12ch;
+}
+
+.lede {
+	margin: 18px 0 0;
+	max-width: 62ch;
+	font-size: 1.08rem;
+	line-height: 1.65;
+	color: var(--muted);
+}
+
+.panel {
+	display: grid;
+	grid-template-columns: 1.05fr 0.95fr;
+	gap: 20px;
+	align-items: start;
+}
+
+.form,
+.output-card {
+	background: var(--panel);
+	border: 1px solid var(--panel-border);
+	backdrop-filter: blur(14px);
+	border-radius: 24px;
+	box-shadow: var(--shadow);
+}
+
+.form {
+	padding: 24px;
+}
+
+.form label {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 12px;
+}
+
+textarea {
+	width: 100%;
+	resize: vertical;
+	min-height: 180px;
+	padding: 16px 18px;
+	border-radius: 18px;
+	border: 1px solid rgba(20, 32, 43, 0.14);
+	background: rgba(255, 255, 255, 0.88);
+	color: var(--text);
+	font: inherit;
+	line-height: 1.5;
+	outline: none;
+	transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+textarea:focus {
+	border-color: rgba(15, 118, 110, 0.5);
+	box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+}
+
+.actions {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	margin-top: 16px;
+	flex-wrap: wrap;
+}
+
+button {
+	appearance: none;
+	border: 0;
+	border-radius: 999px;
+	padding: 12px 18px;
+	background: linear-gradient(135deg, var(--accent), #14b8a6);
+	color: white;
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: 0 14px 30px rgba(15, 118, 110, 0.25);
+	transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 18px 32px rgba(15, 118, 110, 0.3);
+}
+
+button:active {
+	transform: translateY(0);
+}
+
+.status {
+	font-size: 0.95rem;
+	color: var(--muted);
+}
+
+.status.error {
+	color: var(--error);
+}
+
+.output-card {
+	padding: 24px;
+}
+
+.output-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 16px;
+}
+
+.output-header h2 {
+	margin: 0;
+	font-size: 1.15rem;
+}
+
+.meta {
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+.output {
+	margin: 0;
+	min-height: 360px;
+	padding: 18px;
+	border-radius: 20px;
+	overflow: auto;
+	background: rgba(11, 18, 32, 0.95);
+	color: #d6f4ee;
+	line-height: 1.55;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+@media (max-width: 860px) {
+	.panel {
+		grid-template-columns: 1fr;
+	}
+
+	.app-shell {
+		padding-top: 40px;
+	}
+}
+
+@media (max-width: 520px) {
+	.app-shell {
+		width: min(100% - 20px, 1100px);
+	}
+
+	.form,
+	.output-card {
+		padding: 18px;
+		border-radius: 20px;
+	}
+
+	h1 {
+		font-size: 2.2rem;
+	}
+}

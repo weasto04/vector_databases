@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Text Embedding Demo</title>
+		<link rel="stylesheet" href="/style.css" />
+		<script src="/script.js" defer></script>
+	</head>
+	<body>
+		<main class="app-shell">
+			<section class="hero">
+				<p class="eyebrow">FastAPI embedding demo</p>
+				<h1>Embed text and inspect the vector.</h1>
+				<p class="lede">Type a sentence, submit it, and the app will call your FastAPI endpoint and render the embedding as a JSON list.</p>
+			</section>
+
+			<section class="panel">
+				<form id="embed-form" class="form">
+					<label for="input-text">Text to embed</label>
+					<textarea id="input-text" name="text" rows="6" placeholder="Enter a sentence, paragraph, or short note..." required></textarea>
+					<div class="actions">
+						<button type="submit">Generate embedding</button>
+						<span id="status" class="status" aria-live="polite"></span>
+					</div>
+				</form>
+
+				<div class="output-card">
+					<div class="output-header">
+						<h2>Embedding</h2>
+						<span id="vector-length" class="meta">0 values</span>
+					</div>
+					<pre id="output" class="output" aria-live="polite">Submit text to see the vector here.</pre>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
